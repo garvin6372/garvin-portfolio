@@ -276,6 +276,38 @@ export const PROJECTS: Project[] = [
         category: 'UI Experiments'
     },
     {
+        id: 'proj10',
+        title: 'WordStream Reel Creator',
+        description: 'Create high-impact, single-word caption streams for your vertical videos.',
+        longDescription: 'A powerful tool for content creators to generate engaging vertical videos with single-word caption animations. Features AI voice synchronization using Gemini, customizable fonts, and dynamic animation effects for viral social media content.',
+        imageUrl: '/assets/project_images/wordstream_reel.png',
+        images: ['/assets/project_images/wordstream_reel.png'],
+        technologies: ['React', 'Next.js', 'Gemini API', 'Tailwind'],
+        demoUrl: '#',
+        repoUrl: '#',
+        likes: 156,
+        comments: 24,
+        date: 'Just now',
+        type: 'project',
+        category: 'Projects'
+    },
+    {
+        id: 'proj11',
+        title: 'BioVerify - Liveness Detection',
+        description: 'Advanced biometric verification and liveness detection system.',
+        longDescription: 'A secure identity verification platform utilizing advanced face liveness detection to prevent spoofing. Designed for fintech and security applications, ensuring real-time user authentication with high confidence scores.',
+        imageUrl: '/assets/project_images/bioverify.png',
+        images: ['/assets/project_images/bioverify.png'],
+        technologies: ['Python', 'TensorFlow', 'FastAPI', 'React'],
+        demoUrl: '#',
+        repoUrl: '#',
+        likes: 132,
+        comments: 18,
+        date: 'Just now',
+        type: 'project',
+        category: 'Projects'
+    },
+    {
         id: 'proj5',
         title: 'Bulk SMS & Marketing Automation',
         description: 'Scalable AI-powered bulk SMS and customer engagement platform.',
