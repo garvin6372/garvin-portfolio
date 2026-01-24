@@ -1,21 +1,21 @@
 import React from 'react';
-import { 
-  Home, 
-  Search, 
-  Briefcase, 
-  User, 
-  Heart, 
-  MessageCircle, 
-  Send, 
-  MoreHorizontal, 
-  Bookmark,
-  Grid,
-  Monitor,
-  Github,
-  Linkedin,
-  FileText,
-  Menu,
-  X
+import {
+    Home,
+    Search,
+    Briefcase,
+    User,
+    Heart,
+    MessageCircle,
+    Send,
+    MoreHorizontal,
+    Bookmark,
+    Grid,
+    Monitor,
+    Github,
+    Linkedin,
+    FileText,
+    Menu,
+    X
 } from 'lucide-react';
 
 // Using currentColor (implicit) for most, or utility classes passed down.

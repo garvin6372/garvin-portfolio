@@ -1,66 +1,36 @@
-# Garvin Dholakiya - AI Workflow Expert & Full Stack Developer
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-<div align="center">
-  <img src="public/favicon.png" width="100" alt="Garvin Dholakiya Logo" />
-  <p><strong>Transforming Businesses with Intelligent AI Automation & Modern Web Solutions</strong></p>
-</div>
+## Getting Started
 
----
+First, run the development server:
 
-## 🚀 About Me
-I'm Garvin Dholakiya, a Software Engineer specialized in building smart automation systems and AI-powered agents. I bridge the gap between complex AI capabilities and practical business needs by creating end-to-end workflows that save time and reduce costs.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-- 🤖 **AI Specialty:** Agentic Workflows, LangChain, RAG, OpenAI, n8n, Make.
-- 💻 **Full Stack:** React, TypeScript, Node.js, Python, Laravel, FastAPI.
-- 📈 **Goal:** Helping businesses automate the mundane to focus on the extraordinary.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 🛠️ Tech Stack
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### AI & Automation
-- **Platforms:** n8n, Make.com, Zapier
-- **AI Models:** GPT-4, Llama 3, Claude, Stable Diffusion
-- **Tools:** LangChain, Pinecone, Vector Databases, Python (FastAPI)
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### Web Development
-- **Frontend:** React, Next.js, TypeScript, Tailwind CSS
-- **Backend:** Node.js, Express, NestJS, PHP (Laravel, CodeIgniter)
-- **Database:** PostgreSQL, MySQL, MongoDB, Redis
+## Learn More
 
-## 🌟 Featured Projects
-- **Bulk SMS & Marketing Automation:** Scalable AI engagement platform using Twilio & n8n.
-- **AI Bulk Image Generator:** High-speed workflow using Stable Diffusion & Midjourney APIs.
-- **Intelligent Support Chatbot:** Context-aware RAG bot handling 80% of routine queries.
-- **Enterprise LLM Assistant:** Secure, private internal productivity tool.
+To learn more about Next.js, take a look at the following resources:
 
-## ⚙️ Local Development
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-### Prerequisites
-- Node.js (v18+)
-- npm or yarn
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### Steps
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/garvin6372/garvin-portfolio.git
-   cd garvin-portfolio
-   ```
+## Deploy on Vercel
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-3. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
-
-## 📬 Contact
-- **Website:** [garvin.jinnityai.com](https://garvin.jinnityai.com/)
-- **Email:** garvindholakiya511@gmail.com
-- **LinkedIn:** [garvin-dholakiya](https://linkedin.com/in/garvin-dholakiya)
-
----
-<div align="center">
-  Developed by Garvin Dholakiya © 2024
-</div>
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
