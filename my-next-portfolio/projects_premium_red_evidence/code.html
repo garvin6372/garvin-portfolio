@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Geist:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0d0e0f;
+            color: #e3e2e2;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(12, 1fr);
+        }
+        .bento-card {
+            background-color: rgba(31, 32, 32, 0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            border-color: #ff4444;
+            background-color: rgba(31, 32, 32, 0.6);
+        }
+        .glass-header {
+            background: rgba(13, 14, 15, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        
+        /* Dot Pattern Background */
+        .arch-dot-pattern {
+            background-image: radial-gradient(#ffffff0a 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* Loading Animations */
+        @keyframes sweep {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .animate-sweep {
+            animation: sweep 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        @keyframes text-reveal {
+            0% { opacity: 0; letter-spacing: 1em; filter: blur(10px); }
+            100% { opacity: 1; letter-spacing: 0.4em; filter: blur(0); }
+        }
+        .reveal-text {
+            animation: text-reveal 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#343535",
+                      "on-secondary": "#680009",
+                      "primary-fixed": "#e5e2e1",
+                      "on-secondary-fixed-variant": "#930012",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "on-primary": "#313030",
+                      "on-tertiary-container": "#7d7b7b",
+                      "secondary": "#ffb3ad",
+                      "error-container": "#93000a",
+                      "on-surface": "#e3e2e2",
+                      "surface-container-lowest": "#0d0e0f",
+                      "tertiary-container": "#0f0f0f",
+                      "on-tertiary": "#313030",
+                      "on-primary-fixed-variant": "#474646",
+                      "background": "#0d0e0f",
+                      "on-error": "#690005",
+                      "inverse-surface": "#e3e2e2",
+                      "surface-bright": "#383939",
+                      "on-secondary-container": "#ffc2bd",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "surface-variant": "#343535",
+                      "tertiary": "#c8c6c5",
+                      "on-error-container": "#ffdad6",
+                      "primary": "#ff4444",
+                      "error": "#ffb4ab",
+                      "inverse-on-surface": "#303031",
+                      "on-primary-fixed": "#1c1b1b",
+                      "on-primary-container": "#7d7b7b",
+                      "on-tertiary-fixed-variant": "#474746",
+                      "on-background": "#e3e2e2",
+                      "secondary-fixed-dim": "#ffb3ad",
+                      "primary-fixed-dim": "#ff4444",
+                      "primary-container": "#0f0f0f",
+                      "surface-container-high": "#292a2a",
+                      "surface-container-low": "#1b1c1c",
+                      "surface-dim": "#0d0e0f",
+                      "on-surface-variant": "#c4c7c7",
+                      "outline-variant": "#444748",
+                      "surface-tint": "#ff4444",
+                      "inverse-primary": "#5f5e5e",
+                      "outline": "#8e9192",
+                      "secondary-fixed": "#ffdad7",
+                      "surface-container": "#1f2020",
+                      "tertiary-fixed": "#e5e2e1",
+                      "on-secondary-fixed": "#410004",
+                      "surface": "#0d0e0f",
+                      "secondary-container": "#b60119"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "32px",
+                      "gutter": "16px",
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "container-max": "1280px",
+                      "bento-gap": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Geist"],
+                      "headline-md": ["Geist"],
+                      "headline-sm": ["Geist"],
+                      "body-md": ["Geist"],
+                      "body-lg": ["Geist"],
+                      "label-md": ["JetBrains Mono"],
+                      "headline-lg-mobile": ["Geist"],
+                      "display-lg": ["Geist"],
+                      "display-lg-mobile": ["Geist"],
+                      "code-md": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "code-md": ["14px", {"lineHeight": "1.7", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary/30 selection:text-primary">
+<!-- Loading Screen -->
+<div class="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center transition-opacity duration-700" id="loader">
+<div class="relative overflow-hidden w-64 h-24 flex items-center justify-center">
+<span class="reveal-text font-label-md text-on-surface-variant tracking-[0.4em] uppercase text-[10px]">System Architect</span>
+<div class="absolute bottom-0 left-0 w-full h-[1px] overflow-hidden">
+<div class="animate-sweep w-full h-full bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+</div>
+</div>
+</div>
+<!-- Fixed Background Layer -->
+<div class="fixed inset-0 -z-10 bg-background">
+<div class="absolute inset-0 arch-dot-pattern"></div>
+<div class="absolute top-[-15%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-white opacity-[0.03] blur-[150px] rounded-full"></div>
+</div>
+<!-- Content Wrapper -->
+<div class="relative z-10">
+<!-- TopNavBar -->
+<header class="bg-background/80 backdrop-blur-md sticky top-0 z-50 border-b border-white/5">
+<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full max-w-7xl mx-auto">
+<div class="font-label-md text-label-md text-on-surface tracking-widest">ARCHITECT.IO</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-all duration-200 font-label-md text-label-md" href="#">Home</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 transition-all duration-200 font-label-md text-label-md" href="#">Projects</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-all duration-200 font-label-md text-label-md" href="#">Services</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-all duration-200 font-label-md text-label-md" href="#">Blog</a>
+</div>
+<div class="flex gap-4 items-center">
+<button class="hidden md:block text-on-surface-variant hover:text-primary font-label-md text-label-md px-4 py-2 transition-all">View Work</button>
+<button class="bg-primary text-on-secondary-fixed font-label-md text-label-md px-6 py-2.5 rounded font-bold hover:scale-95 active:scale-95 transition-all">Hire Me</button>
+</div>
+</nav>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-12">
+<!-- Hero Title -->
+<div class="mb-16">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-4 text-on-surface">Curated <span class="text-primary">Deliverables.</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">A focused exhibition of technical architectures, complex integrations, and high-performance automation systems.</p>
+</div>
+<!-- Filter Tabs -->
+<div class="flex flex-wrap gap-4 mb-10 overflow-x-auto pb-4 scrollbar-hide">
+<button class="filter-btn active px-6 py-2 rounded-full border border-primary bg-primary/10 text-primary font-label-md text-label-md transition-all" onclick="filterProjects('all')">All</button>
+<button class="filter-btn px-6 py-2 rounded-full border border-white/10 hover:border-primary/50 text-on-surface-variant font-label-md text-label-md transition-all" onclick="filterProjects('fullstack')">Full-Stack</button>
+<button class="filter-btn px-6 py-2 rounded-full border border-white/10 hover:border-primary/50 text-on-surface-variant font-label-md text-label-md transition-all" onclick="filterProjects('automation')">Automation</button>
+<button class="filter-btn px-6 py-2 rounded-full border border-white/10 hover:border-primary/50 text-on-surface-variant font-label-md text-label-md transition-all" onclick="filterProjects('api')">API Development</button>
+</div>
+<!-- Bento Grid -->
+<div class="bento-grid" id="project-container">
+<!-- Featured Card - Fullstack -->
+<div class="bento-card project-item col-span-12 md:col-span-8 p-6 rounded-xl flex flex-col justify-between min-h-[400px]" data-category="fullstack">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="text-primary font-label-md text-[10px] tracking-widest uppercase mb-2 block">Enterprise Solution</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Nexus Infrastructure Platform</h2>
+</div>
+<div class="flex gap-2">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full font-label-md text-[10px]">React</span>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full font-label-md text-[10px]">Go</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-8 flex-grow">
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-2 uppercase opacity-60">Problem</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Fragmented deployment pipelines causing 14% failure rate in staging environments for a Fortune 500 logistics provider.</p>
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-2 uppercase opacity-60">Results</h4>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-primary font-body-md text-body-md">
+<span class="material-symbols-outlined text-sm">check_circle</span> 99.9% Pipeline Stability
+                            </li>
+<li class="flex items-center gap-2 text-primary font-body-md text-body-md">
+<span class="material-symbols-outlined text-sm">check_circle</span> 40% Reduction in Dev-to-Prod time
+                            </li>
+</ul>
+</div>
+<div class="flex-1 bg-black/20 rounded-lg p-4 border border-white/5 font-code-md text-code-md">
+<div class="flex items-center justify-between mb-2">
+<span class="text-on-surface-variant text-[10px]">ARCHITECTURE.YAML</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">content_copy</span>
+</div>
+<code class="text-on-surface-variant/80">
+                            services:<br/>
+                              core:<br/>
+                                runtime: golang:1.21<br/>
+                                scaling: auto-horizontal<br/>
+                              gateway:<br/>
+                                type: envoy-proxy<br/>
+                                security: mTLS-enabled
+                        </code>
+</div>
+</div>
+</div>
+<!-- Side Card - Automation -->
+<div class="bento-card project-item col-span-12 md:col-span-4 p-6 rounded-xl flex flex-col" data-category="automation">
+<span class="text-primary font-label-md text-[10px] tracking-widest uppercase mb-2 block">Automation Engine</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-4">Neural Data Pipeline</h2>
+<div class="mb-6 h-32 w-full overflow-hidden rounded-lg bg-black/30">
+<img class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-500" data-alt="Technical hardware imagery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtSUviLmTPTte2M9apnnr4qD-jYJBrzTYdi0HG5ACHNwLAzqj_HYj2qkTTwH4HooKPlQMqEmJjuxD9Yv-COS6mnIb16p7ZV66sxCMfrXREkuxIXv3uyG9ZdUKrygWaciHkCAyZHf8i_oVGfpaETDwHJI3PSfMlBMW39LpuKRJrbNqJjxhoTgi5QkdqcZTAecFBQsJyCB-ck1YL--M1vrQXNuWy6b3fqBvhoc_ufpgjvGnpqcSvAMLxlEXcTDfWtbOQHOh4efSW6T06"/>
+</div>
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-2 uppercase opacity-60">Architecture</h4>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow">Self-healing data ingestion engine processing 1.2M events/second using Rust and Apache Kafka.</p>
+<div class="mt-4 pt-4 border-t border-white/5">
+<button class="flex items-center gap-2 text-primary font-label-md text-label-md hover:gap-4 transition-all">
+                        CASE STUDY <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Small Card - API -->
+<div class="bento-card project-item col-span-12 md:col-span-4 p-6 rounded-xl flex flex-col" data-category="api">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">api</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Auth-Matrix API</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">High-availability identity provider with sub-5ms latency and OAuth2/OIDC compliance.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-white/5 px-2 py-1 text-[10px] font-label-md rounded">KUBERNETES</span>
+<span class="bg-white/5 px-2 py-1 text-[10px] font-label-md rounded">REDIS</span>
+</div>
+<div class="bg-black/20 border border-white/5 rounded p-3 font-code-md text-[12px] text-primary/70">
+                    GET /v1/identity/verify
+                </div>
+</div>
+<!-- Wide Card - Fullstack -->
+<div class="bento-card project-item col-span-12 md:col-span-8 p-6 rounded-xl flex flex-col md:flex-row gap-6" data-category="fullstack">
+<div class="flex-1 h-full min-h-[200px] rounded-lg overflow-hidden bg-black/30 relative">
+<img class="absolute inset-0 w-full h-full object-cover opacity-50 grayscale" data-alt="Futuristic interface visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqYztUluOiqvSlDBUtt_yc2hkjuf3c4z6veSHgEQiBFJT3tApaD30OnI7hCKs1wQf9kmCeIP2rNt43KPW6yYy-SyCuDilSZ2KP8mdvaqjcsJ3nIY5AmlOc6tXo0h9l2uCtEGIUlupCyVVlQ5qyg7qgDuC-7G9AkSOqTx1I7xN1SkrzgyWHIIbuxvFfTwxW6xVRtpU_AIthwef8W8o-CffFis06zQCCj-a1BdIl8obAzCjgseiCESbVa-TeH_4FK4OPLXUWZHzcMsXX"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background to-transparent"></div>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<span class="text-primary font-label-md text-[10px] tracking-widest uppercase mb-2 block">Fullstack Application</span>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-3">Vanguard Dashboard</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Real-time threat detection interface with interactive 3D topology mapping for cybersecurity monitoring.</p>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<span class="block font-headline-sm text-headline-sm text-on-surface">92%</span>
+<span class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-wider opacity-60">Threat Recognition</span>
+</div>
+<div>
+<span class="block font-headline-sm text-headline-sm text-on-surface">&lt;2s</span>
+<span class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-wider opacity-60">Avg Response</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-background/50 border-t border-white/5 mt-20">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-gutter w-full max-w-7xl mx-auto">
+<div class="font-label-md text-label-md text-primary mb-4 md:mb-0">ARCHITECT.IO</div>
+<div class="flex gap-8 mb-6 md:mb-0">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Github</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Twitter</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Contact</a>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-center md:text-right opacity-50">
+                © 2024 Architect. All rights reserved. Built with technical precision.
+            </div>
+</div>
+</footer>
+</div>
+<script>
+    // Loading Screen Logic
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const loader = document.getElementById('loader');
+            loader.classList.add('opacity-0');
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 700);
+        }, 2200);
+    });
+
+    // Project Filtering Logic
+    function filterProjects(category) {
+        const items = document.querySelectorAll('.project-item');
+        const buttons = document.querySelectorAll('.filter-btn');
+
+        buttons.forEach(btn => {
+            btn.classList.remove('active', 'border-primary', 'bg-primary/10', 'text-primary');
+            btn.classList.add('border-white/10', 'text-on-surface-variant');
+        });
+
+        const currentBtn = event.currentTarget;
+        currentBtn.classList.add('active', 'border-primary', 'bg-primary/10', 'text-primary');
+        currentBtn.classList.remove('border-white/10', 'text-on-surface-variant');
+
+        items.forEach(item => {
+            item.style.transition = 'opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            if (category === 'all' || item.getAttribute('data-category') === category) {
+                item.style.display = 'flex';
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0) scale(1)';
+                }, 50);
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px) scale(0.98)';
+                setTimeout(() => {
+                    item.style.display = 'none';
+                }, 400);
+            }
+        });
+    }
+</script>
+</body></html>

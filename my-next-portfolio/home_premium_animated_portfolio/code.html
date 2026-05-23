@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ARCHITECT.IO | Software Developer &amp; Workflow Architect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Geist:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#343535",
+                    "on-secondary": "#680009",
+                    "primary-fixed": "#e5e2e1",
+                    "on-secondary-fixed-variant": "#930012",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "on-primary": "#313030",
+                    "on-tertiary-container": "#7d7b7b",
+                    "secondary": "#ffb3ad",
+                    "error-container": "#93000a",
+                    "on-surface": "#e3e2e2",
+                    "surface-container-lowest": "#0d0e0f",
+                    "tertiary-container": "#0f0f0f",
+                    "on-tertiary": "#313030",
+                    "on-primary-fixed-variant": "#474646",
+                    "background": "#121414",
+                    "on-error": "#690005",
+                    "inverse-surface": "#e3e2e2",
+                    "surface-bright": "#383939",
+                    "on-secondary-container": "#ffc2bd",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "surface-variant": "#343535",
+                    "tertiary": "#c8c6c5",
+                    "on-error-container": "#ffdad6",
+                    "primary": "#ff4444",
+                    "error": "#ffb4ab",
+                    "inverse-on-surface": "#303031",
+                    "on-primary-fixed": "#1c1b1b",
+                    "on-primary-container": "#7d7b7b",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "on-background": "#e3e2e2",
+                    "secondary-fixed-dim": "#ffb3ad",
+                    "primary-fixed-dim": "#ff4444",
+                    "primary-container": "#0f0f0f",
+                    "surface-container-high": "#292a2a",
+                    "surface-container-low": "#1b1c1c",
+                    "surface-dim": "#121414",
+                    "on-surface-variant": "#c4c7c7",
+                    "outline-variant": "#444748",
+                    "surface-tint": "#ff4444",
+                    "inverse-primary": "#5f5e5e",
+                    "outline": "#8e9192",
+                    "secondary-fixed": "#ffdad7",
+                    "surface-container": "#1f2020",
+                    "tertiary-fixed": "#e5e2e1",
+                    "on-secondary-fixed": "#410004",
+                    "surface": "#121414",
+                    "secondary-container": "#b60119"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "bento-gap": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Geist"],
+                    "headline-md": ["Geist"],
+                    "body-md": ["Geist"],
+                    "body-lg": ["Geist"],
+                    "label-md": ["JetBrains Mono"],
+                    "label-caps": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Geist"],
+                    "display-lg": ["Geist"],
+                    "display-lg-mobile": ["Geist"],
+                    "headline-sm": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        background-color: #121414;
+        color: #e3e2e2;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      .bento-card {
+        background-color: rgba(31, 32, 32, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(8px);
+      }
+      .bento-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 68, 68, 0.3);
+        box-shadow: 0 10px 30px -10px rgba(255, 68, 68, 0.1);
+      }
+      .marquee-content {
+        animation: scroll 30s linear infinite;
+      }
+      @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      }
+      
+      .dot-pattern {
+        background-image: radial-gradient(#ffffff08 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+
+      /* Loading Animation */
+      @keyframes sweep {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100vw); }
+      }
+      .sweeping-line {
+        height: 1px;
+        width: 300px;
+        background: linear-gradient(90deg, transparent, #ff4444, transparent);
+        animation: sweep 2.5s infinite linear;
+      }
+
+      @keyframes fade-out {
+        to { opacity: 0; visibility: hidden; }
+      }
+      .loader-hide {
+        animation: fade-out 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+      }
+
+      /* Reveal Animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Hero Stagger */
+      .hero-item {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .hero-item.active {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Glitch Effect */
+      @keyframes shimmer {
+        0% { color: #ff4444; text-shadow: 0 0 0px transparent; }
+        50% { color: #ff7777; text-shadow: 0 0 10px rgba(255, 68, 68, 0.5); }
+        100% { color: #ff4444; text-shadow: 0 0 0px transparent; }
+      }
+      .glitch-text {
+        animation: shimmer 3s infinite;
+      }
+
+      /* Cursor Glow */
+      #cursor-glow {
+        pointer-events: none;
+        position: fixed;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(255, 68, 68, 0.05) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+        transition: opacity 0.3s;
+        opacity: 0;
+      }
+
+      .magnetic {
+        transition: transform 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+      }
+    </style>
+</head>
+<body class="bg-[#121414] selection:bg-primary selection:text-on-primary text-on-surface">
+<!-- Cursor Glow Element -->
+<div id="cursor-glow"></div>
+<!-- Loading Screen -->
+<div class="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center" id="loader">
+<div class="relative overflow-hidden mb-8">
+<div class="font-mono tracking-[0.4em] uppercase text-neutral-400 text-sm" id="loader-text" style="opacity:0; transform: translateY(10px); transition: all 1s ease;">
+            System Architect
+        </div>
+</div>
+<div class="fixed top-1/2 left-0 w-full overflow-hidden">
+<div class="sweeping-line"></div>
+</div>
+</div>
+<!-- Background Elements -->
+<div class="fixed inset-0 -z-10 bg-[#121414]">
+<div class="absolute inset-0 dot-pattern opacity-60"></div>
+<div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full bg-primary opacity-[0.05] blur-[140px]"></div>
+</div>
+<div class="relative z-10">
+<!-- TopNavBar -->
+<nav class="bg-surface/40 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-white/5 flat no shadows">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full max-w-7xl mx-auto">
+<div class="font-label-caps text-label-caps text-on-surface tracking-widest font-bold">ARCHITECT.IO</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-caps text-label-caps" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-all duration-200 font-label-caps text-label-caps" href="#">Projects</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-all duration-200 font-label-caps text-label-caps" href="#">Services</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-all duration-200 font-label-caps text-label-caps" href="#">Blog</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block px-4 py-2 text-on-surface font-medium hover:text-primary transition-all duration-200 font-label-caps text-label-caps">View Work</button>
+<button class="bg-primary text-on-primary-fixed px-6 py-2 rounded-lg font-bold hover:scale-95 transition-transform font-label-caps text-label-caps magnetic">Hire Me</button>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section -->
+<section class="py-20 md:py-32 flex flex-col items-center text-center overflow-hidden" id="hero">
+<div class="hero-item inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 mb-8" style="transition-delay: 100ms;">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-primary">Available for selective partnerships</span>
+</div>
+<h1 class="hero-item font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6 max-w-4xl" style="transition-delay: 300ms;">
+                Software Developer &amp; <br/><span class="text-primary glitch-text">Workflow Architect</span>
+</h1>
+<p class="hero-item font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-12" style="transition-delay: 500ms;">
+                Building scalable web applications and intelligent automation systems that bridge the gap between complex engineering and elegant business utility.
+            </p>
+<div class="hero-item flex flex-col sm:flex-row gap-6" style="transition-delay: 700ms;">
+<button class="magnetic bg-primary text-on-primary-fixed px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:scale-95 transition-transform">
+                    View Work
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="magnetic border border-outline-variant px-8 py-4 rounded-xl font-bold text-on-surface hover:bg-white/5 transition-colors">
+                    Hire Me
+                </button>
+</div>
+</section>
+<!-- Tech Stack Marquee -->
+<section class="py-12 overflow-hidden border-y border-white/5 bg-surface-container-lowest/20">
+<div class="flex whitespace-nowrap marquee-content">
+<div class="flex gap-12 items-center px-6">
+<span class="font-label-caps text-headline-sm text-on-surface-variant/40 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>TypeScript</span>
+<span class="font-label-caps text-headline-sm text-on-surface-variant/40 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>Python</span>
+<span class="font-label-caps text-headline-sm text-on-surface-variant/40 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>React</span>
+<span class="font-label-caps text-headline-sm text-on-surface-variant/40 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>Laravel</span>
+<span class="font-label-caps text-headline-sm text-on-surface-variant/40 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>Node.js</span>
+<span class="font-label-caps text-headline-sm text-on-surface-variant/40 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>n8n</span>
+</div>
+<!-- Duplicate for infinite effect -->
+<div class="flex gap-12 items-center px-6">
+<span class="font-label-caps text-headline-sm text-on-surface-variant/40 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>TypeScript</span>
+<span class="font-label-caps text-headline-sm text-on-surface-variant/40 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>Python</span>
+<span class="font-label-caps text-headline-sm text-on-surface-variant/40 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>React</span>
+<span class="font-label-caps text-headline-sm text-on-surface-variant/40 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>Laravel</span>
+<span class="font-label-caps text-headline-sm text-on-surface-variant/40 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>Node.js</span>
+<span class="font-label-caps text-headline-sm text-on-surface-variant/40 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>n8n</span>
+</div>
+</div>
+</section>
+<!-- Featured Work -->
+<section class="py-24 reveal" id="featured-work">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Featured Work</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Selected projects showing technical depth.</p>
+</div>
+<button class="text-primary font-label-caps text-label-caps flex items-center gap-2 hover:translate-x-1 transition-transform">
+                    All Projects <span class="material-symbols-outlined">trending_flat</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-bento-gap">
+<!-- Project 1 -->
+<div class="bento-card rounded-xl overflow-hidden group">
+<div class="h-80 relative overflow-hidden border-b border-white/5">
+<img alt="Fintech Dashboard" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr_M8G2g4qsh-wzzEYvZ5Gfdstki4sKRMQg8NBvNymFJvAgDavvTrLEG-aG8jwaVPSm6Kq74S53xl8o70o8754xvmaedmmRcWAjxaCk7dt_17YoZG1midTgvccaXPOj9LmPg0Sl4fD4AzPCr-1teHfTF4uqbWkJwyp4iVFpgjFULoigk5Al0vJmMzL5rVJxTyMJ9vZV4M_OI9Hc1h06I0F7KxewEl982NlzUBR0aWPQ85_-_d6O-wiNh1HazvoFPIyPcA5jm1zqkRx"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+</div>
+<div class="p-8">
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-primary/10 text-primary font-label-caps text-[10px] px-2 py-1 rounded">TYPESCRIPT</span>
+<span class="bg-primary/10 text-primary font-label-caps text-[10px] px-2 py-1 rounded">REACT</span>
+<span class="bg-primary/10 text-primary font-label-caps text-[10px] px-2 py-1 rounded">TAILWIND</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-3">QuantPulse Financial OS</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                            A high-performance trading dashboard with real-time WebSocket integrations and custom data visualization components.
+                        </p>
+<a class="inline-flex items-center gap-2 text-on-surface font-label-caps text-label-caps hover:text-primary transition-colors" href="#">
+                            Case Study <span class="material-symbols-outlined">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="bento-card rounded-xl overflow-hidden group">
+<div class="h-80 relative overflow-hidden border-b border-white/5">
+<img alt="Automation Engine" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiSV3HU_6pKnjOCltei06P51WK564o27clndA5ViDmAnZXzp8DZcsHu9qCIwWVnpdROy1r599qjgvK1gztPb_tsRGnzl8lb0shlSOrTGZpIyXFKC8g0FnR2skjHq13k_zyARTCXUdMa6twSrp7VtxjSVjpPyA_8-qEk21oCYcm9rh0v03jLFZv0WY6jg3WtRKCQD6O97lxSDioXZPNkL3WHZkSr37F4bfwD1zSnVMv9c-WJ4MMwt35O_daV6cc_fEwyKnpb_fkrWlL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+</div>
+<div class="p-8">
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-primary/10 text-primary font-label-caps text-[10px] px-2 py-1 rounded">PYTHON</span>
+<span class="bg-primary/10 text-primary font-label-caps text-[10px] px-2 py-1 rounded">N8N</span>
+<span class="bg-primary/10 text-primary font-label-caps text-[10px] px-2 py-1 rounded">REDIS</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-3">Nexus Workflow Engine</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                            Distributed automation system processing over 500k monthly tasks for a leading enterprise SaaS provider.
+                        </p>
+<a class="inline-flex items-center gap-2 text-on-surface font-label-caps text-label-caps hover:text-primary transition-colors" href="#">
+                            Case Study <span class="material-symbols-outlined">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Service Teaser -->
+<section class="py-24 reveal" id="expertise">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-12 text-center">Core Expertise</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-bento-gap">
+<!-- Card 1 -->
+<div class="bento-card p-8 rounded-xl">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-3xl">developer_mode_tv</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4">Custom Software</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        High-performance web applications built with modern frameworks and a focus on maintainability.
+                    </p>
+</div>
+<!-- Card 2 -->
+<div class="bento-card p-8 rounded-xl">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-3xl">hub</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4">Workflow Design</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Intelligent automation that eliminates manual bottlenecks and connects your fragmented tech stack.
+                    </p>
+</div>
+<!-- Card 3 -->
+<div class="bento-card p-8 rounded-xl">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-3xl">architecture</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4">Architecture Audits</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Deep-dive technical evaluations of existing systems to improve scalability and security.
+                    </p>
+</div>
+</div>
+</section>
+<!-- CTA Canvas -->
+<section class="py-24 mb-12 reveal">
+<div class="bg-primary rounded-2xl p-12 md:p-20 text-center relative overflow-hidden group">
+<div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#680009_1.5px,transparent_1.5px)] bg-[size:24px_24px]"></div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-on-primary-fixed mb-8 relative z-10">Ready to build something <br class="hidden md:block"/>remarkable?</h2>
+<p class="font-body-lg text-on-primary-fixed/80 max-w-xl mx-auto mb-12 relative z-10">
+                    I am currently accepting new projects for Q3 2024. Let's discuss how technical precision can drive your next milestone.
+                </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
+<button class="magnetic bg-on-primary-fixed text-primary px-8 py-4 rounded-xl font-bold hover:scale-105 transition-transform">
+                        Schedule a Strategy Call
+                    </button>
+<button class="magnetic border border-on-primary-fixed/20 text-on-primary-fixed px-8 py-4 rounded-xl font-bold hover:bg-on-primary-fixed/5 transition-colors">
+                        View Rates
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-transparent border-t border-white/5 flat no shadows">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-gutter w-full max-w-7xl mx-auto">
+<div class="font-label-caps text-label-caps text-primary mb-6 md:mb-0">ARCHITECT.IO</div>
+<div class="font-body-md text-body-md text-on-surface-variant/60 mb-6 md:mb-0">
+                © 2024 Architect. All rights reserved. Built with technical precision.
+            </div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-caps text-label-caps" href="#">Github</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-caps text-label-caps" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-caps text-label-caps" href="#">Twitter</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-caps text-label-caps" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</div>
+<script>
+    // Loading Screen logic
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        const loaderText = document.getElementById('loader-text');
+        
+        // Staggered sequence
+        setTimeout(() => {
+            loaderText.style.opacity = '1';
+            loaderText.style.transform = 'translateY(0)';
+        }, 500);
+
+        setTimeout(() => {
+            loader.classList.add('loader-hide');
+            
+            // Trigger Hero Animations
+            document.querySelectorAll('.hero-item').forEach(item => {
+                item.classList.add('active');
+            });
+            
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 800);
+        }, 2500);
+    });
+
+    // Scroll reveal observer
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Mouse glow & Magnetic effects
+    const glow = document.getElementById('cursor-glow');
+    const heroSection = document.getElementById('hero');
+
+    window.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        
+        // Track glow
+        glow.style.left = `${x}px`;
+        glow.style.top = `${y}px`;
+        
+        // Only show glow near hero
+        const heroRect = heroSection.getBoundingClientRect();
+        if (y < heroRect.bottom + 200) {
+            glow.style.opacity = '1';
+        } else {
+            glow.style.opacity = '0';
+        }
+    });
+
+    // Magnetic buttons
+    document.querySelectorAll('.magnetic').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const moveX = (e.clientX - centerX) * 0.3;
+            const moveY = (e.clientY - centerY) * 0.3;
+            btn.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.02)`;
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = `translate(0px, 0px) scale(1)`;
+        });
+    });
+
+    // Simple smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+</body></html>

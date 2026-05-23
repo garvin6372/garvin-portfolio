@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog | ARCHITECT.IO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#410004",
+                        "outline-variant": "#444748",
+                        "on-secondary-fixed": "#1b1b1d",
+                        "secondary-container": "#b60119",
+                        "surface-container-low": "#1b1c1c",
+                        "on-tertiary-container": "#7d7b7b",
+                        "primary": "#FF4444",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#ffdad7",
+                        "surface-container": "#1f2020",
+                        "on-background": "#e3e2e2",
+                        "on-primary-fixed": "#ffffff",
+                        "surface-container-high": "#292a2a",
+                        "on-primary": "#ffffff",
+                        "background": "#121414",
+                        "error-container": "#93000a",
+                        "on-surface": "#e3e2e2",
+                        "primary-fixed-dim": "#FF4444",
+                        "tertiary-container": "#0f0f0f",
+                        "on-tertiary": "#313030",
+                        "on-secondary": "#680009",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "tertiary": "#c8c6c5",
+                        "inverse-surface": "#e3e2e2",
+                        "surface": "#121414",
+                        "surface-container-highest": "#343535",
+                        "tertiary-fixed": "#e5e2e1",
+                        "outline": "#8e9192",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "inverse-primary": "#5f5e5e",
+                        "surface-variant": "#343535",
+                        "primary-container": "#300002",
+                        "surface-bright": "#383939",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-secondary-container": "#ffc2bd",
+                        "surface-tint": "#FF4444",
+                        "on-primary-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0d0e0f",
+                        "on-error": "#690005",
+                        "primary-fixed": "#ffdad7",
+                        "secondary-fixed-dim": "#ffb3ad",
+                        "secondary": "#ffb3ad",
+                        "inverse-on-surface": "#303031",
+                        "on-surface-variant": "#c4c7c7",
+                        "on-secondary-fixed-variant": "#930012",
+                        "surface-dim": "#121414"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "base": "4px",
+                        "margin-mobile": "20px",
+                        "bento-gap": "16px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Geist"],
+                        "body-md": ["Geist"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-lg": ["Geist"],
+                        "headline-sm": ["Geist"],
+                        "display-lg-mobile": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "code-md": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "code-md": ["14px", {"lineHeight": "1.7", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .bento-card {
+            background-color: #121214;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-card:hover {
+            transform: scale(1.02);
+            border-color: #FF4444;
+        }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        @keyframes lineSweep {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100vw); }
+        }
+        .sweep-animation {
+            animation: lineSweep 3s linear infinite;
+        }
+        @keyframes textReveal {
+            from { opacity: 0; letter-spacing: 1em; filter: blur(10px); }
+            to { opacity: 1; letter-spacing: 0.4em; filter: blur(0); }
+        }
+        .reveal-anim {
+            animation: textReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="bg-[#0f0f0f] text-neutral-200 selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- Loading Screen -->
+<div class="fixed inset-0 z-[100] bg-[#0f0f0f] flex flex-col items-center justify-center transition-opacity duration-1000" id="loading-screen">
+<div class="relative flex flex-col items-center">
+<div class="reveal-anim font-mono text-neutral-400 text-xs tracking-[0.4em] uppercase mb-8">System Architect</div>
+<div class="w-48 h-[1px] bg-neutral-800 relative overflow-hidden">
+<div class="absolute inset-0 sweep-animation bg-gradient-to-r from-transparent via-[#FF4444]/50 to-transparent w-full h-full"></div>
+</div>
+</div>
+</div>
+<!-- Background Elements -->
+<div class="fixed inset-0 z-[-1] pointer-events-none bg-[#0f0f0f]">
+<div class="absolute inset-0 bg-[radial-gradient(#ffffff10_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+<div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-white opacity-[0.03] blur-[120px]"></div>
+</div>
+<!-- Content Wrapper -->
+<div class="relative z-10">
+<!-- TopNavBar -->
+<header class="bg-surface/80 backdrop-blur-md dark:bg-surface/80 docked full-width top-0 sticky z-50 border-b border-white/10">
+<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full max-w-7xl mx-auto">
+<div class="font-label-caps text-label-caps text-neutral-200 tracking-widest">
+                ARCHITECT.IO
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant font-medium hover:text-[#FF4444] transition-all duration-200" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-[#FF4444] transition-all duration-200" href="#">Projects</a>
+<a class="text-on-surface-variant font-medium hover:text-[#FF4444] transition-all duration-200" href="#">Services</a>
+<a class="text-[#FF4444] font-bold border-b-2 border-[#FF4444] pb-1" href="#">Blog</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="hidden md:block font-label-caps text-label-caps text-on-surface-variant hover:text-[#FF4444] transition-all">View Work</button>
+<button class="px-6 py-2 bg-[#FF4444] text-white font-label-caps text-label-caps rounded hover:scale-95 transition-transform active:opacity-80">Hire Me</button>
+</div>
+</nav>
+</header>
+<main class="w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-12">
+<!-- Hero Section -->
+<section class="mb-16">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-4 text-neutral-200">
+                Engineering <span class="text-[#FF4444]">Insights</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                Technical deep dives into high-performance architecture, automation workflows, and the future of web infrastructure.
+            </p>
+</section>
+<!-- Category Filter (Simplified) -->
+<div class="flex flex-wrap gap-bento-gap mb-12">
+<span class="px-4 py-1 rounded-full bg-[#FF4444]/10 text-[#FF4444] border border-[#FF4444]/20 font-label-caps text-label-caps">All Articles</span>
+<span class="px-4 py-1 rounded-full bg-surface-container-high text-on-surface-variant hover:border-[#FF4444]/50 border border-transparent transition-all cursor-pointer font-label-caps text-label-caps">Scaling Apps</span>
+<span class="px-4 py-1 rounded-full bg-surface-container-high text-on-surface-variant hover:border-[#FF4444]/50 border border-transparent transition-all cursor-pointer font-label-caps text-label-caps">Automation</span>
+<span class="px-4 py-1 rounded-full bg-surface-container-high text-on-surface-variant hover:border-[#FF4444]/50 border border-transparent transition-all cursor-pointer font-label-caps text-label-caps">Deep Dives</span>
+</div>
+<!-- Blog Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-bento-gap">
+<!-- Article 1: Scaling Apps -->
+<article class="bento-card rounded-xl overflow-hidden flex flex-col group">
+<div class="h-48 w-full overflow-hidden relative">
+<img alt="Scaling Architecture" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A macro shot of a complex server rack array with glowing blue fiber optic cables weaving through dark metallic structures. The lighting is low-key and dramatic, focusing on the sharp edges and technical precision of the hardware. The color palette is dominated by deep blacks and vibrant electric cyan highlights, evoking a high-end data center atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcGr07tEIB2SG_M5FFs8KEKNuDSZIhrnGi1uZIewYln1gvKu-NCC5NoeizMAToZjtFUaQpSUtaHRy7B1ToGkCV9G5uoYf2Chy1ioovUO72pKrpvWj_X986JaJx9gwbtWsp4ghVJkXB2ineNALiWIagKp1NhqVlwXan5nkYnymePzezV7nQ1VC5HiqRof5ZWdMRo6vNGKWZzcg6XKWC5klp19aelHIhOmA02zzEsv4o0guXsyMiHSnyKipDbiJTLg5jpcmyHq1RlPl_"/>
+<div class="absolute top-4 left-4">
+<span class="bg-surface/90 backdrop-blur px-2 py-1 rounded font-label-caps text-[10px] text-[#FF4444] border border-[#FF4444]/30">SCALING</span>
+</div>
+</div>
+<div class="p-gutter flex-grow flex flex-col">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">OCT 24, 2024</span>
+<span class="font-label-caps text-label-caps text-[#FF4444] flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1">schedule</span> 8 MIN READ
+                        </span>
+</div>
+<h2 class="font-headline-sm text-headline-sm mb-3 group-hover:text-[#FF4444] transition-colors text-neutral-200">Vertical vs Horizontal: The Scaling Paradox</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                        Exploring the technical trade-offs when transitioning from monolithic systems to distributed microservices at scale.
+                    </p>
+<div class="mt-auto pt-4 border-t border-white/5 flex justify-between items-center">
+<span class="font-code-md text-code-md text-on-surface-variant">#kubernetes #devops</span>
+<span class="material-symbols-outlined text-[#FF4444] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- Article 2: Automation -->
+<article class="bento-card rounded-xl overflow-hidden flex flex-col group">
+<div class="h-48 w-full overflow-hidden relative">
+<img alt="Automation Flows" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Abstract visualization of a digital neural network composed of thin white lines and glowing cyan nodes pulsing on a deep black background. The style is minimalist and clean, representing high-speed data flow and automated logic. The image captures a sense of sophisticated algorithmic movement with a cool, professional tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-cDUYLIJWHA2frUasRp-kZj4Ynr1sUPtM8z78b0u0Oz5E1MSAmUsWfXXFQeoE9Afxn_8Fe2R5soHtdVhqaab9E07zMsWSNKe2JNA_kuMUYIyQyC2hYuhOWJKX9QDGMfCyiqDBqGKeC5YIt2HEYqf9r61sDmvVhJO49WfbdfwzGYBRMSZnimA_cxgH7mSNv8BhqkTP09NBuYFkJCrfinZTCqQzjxHxrLVQn2hCpBH_I4CzcnIQF659KHfCRktgqLZKWLzTEr1zP6Oo"/>
+<div class="absolute top-4 left-4">
+<span class="bg-surface/90 backdrop-blur px-2 py-1 rounded font-label-caps text-[10px] text-[#FF4444] border border-[#FF4444]/30">AUTOMATION</span>
+</div>
+</div>
+<div class="p-gutter flex-grow flex flex-col">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">OCT 18, 2024</span>
+<span class="font-label-caps text-label-caps text-[#FF4444] flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1">schedule</span> 5 MIN READ
+                        </span>
+</div>
+<h2 class="font-headline-sm text-headline-sm mb-3 group-hover:text-[#FF4444] transition-colors text-neutral-200">CI/CD Mastery with GitHub Actions</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                        How to build a self-healing deployment pipeline that handles testing, security audits, and global CDN invalidation.
+                    </p>
+<div class="mt-auto pt-4 border-t border-white/5 flex justify-between items-center">
+<span class="font-code-md text-code-md text-on-surface-variant">#github #automation</span>
+<span class="material-symbols-outlined text-[#FF4444] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- Article 3: Tech Stack -->
+<article class="bento-card rounded-xl overflow-hidden flex flex-col group">
+<div class="h-48 w-full overflow-hidden relative">
+<img alt="Tech Stacks" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A cinematic close-up of a high-end mechanical keyboard illuminated by subtle cyan backlighting in a dark room. Each keycap is sharply defined against a matte black surface, representing the developer's workspace and precision toolset. The mood is focused and executive-level, with deep shadows and soft bokeh in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW-1xX4nKFmoGWBPwc7Pzop6aQBzStAkyoIHr_ps6b7CVwZNd7NNN7YNy1qg6wUyf9qZsJPr6nHYGSJtwHounfHJum0RRq-C4GHaLrs3lChopg9ezhHuVQHJf38jOQU0UJZNdGVOVdhwVxF0qi3YJtJ3YiTOdixqoNe9rbtxvx1lpftj97jvSsTfrBKRXg2N9IQ2UtX4tMP0qBaD1UFFsZxGiDOy-SnVFelODh0kbqN_pu1k0W-oLiCFS63QToHtMpjSBeym7TGMzB"/>
+<div class="absolute top-4 left-4">
+<span class="bg-surface/90 backdrop-blur px-2 py-1 rounded font-label-caps text-[10px] text-[#FF4444] border border-[#FF4444]/30">DEEP DIVE</span>
+</div>
+</div>
+<div class="p-gutter flex-grow flex flex-col">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">OCT 12, 2024</span>
+<span class="font-label-caps text-label-caps text-[#FF4444] flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1">schedule</span> 12 MIN READ
+                        </span>
+</div>
+<h2 class="font-headline-sm text-headline-sm mb-3 group-hover:text-[#FF4444] transition-colors text-neutral-200">The 2024 Engineering Stack</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                        A critical analysis of the current state of TypeScript, Rust, and the rise of edge-computing frameworks.
+                    </p>
+<div class="mt-auto pt-4 border-t border-white/5 flex justify-between items-center">
+<span class="font-code-md text-code-md text-on-surface-variant">#typescript #rust</span>
+<span class="material-symbols-outlined text-[#FF4444] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- Article 4: Performance -->
+<article class="bento-card rounded-xl overflow-hidden flex flex-col group">
+<div class="h-48 w-full overflow-hidden relative">
+<img alt="Performance" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Close-up photograph of a sleek silicon chip processor under cold laboratory lighting. The intricate gold and silver circuitry paths are visible against a dark substrate, highlighting technical perfection and processing power. The aesthetic is clean, professional, and sophisticated, dominated by dark tones and sharp metallic reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQNPXtqqDS1vqotOyogBhhyEDW5CPNk32BRkX1UGFIB46Hm1tnZRWVKzT2GAHWOnv0Mlk1aPiAJFakU4QHrdj61NI9qlHUNDroG6AMlwSXacJOe90Nt7QJ6VB05uDxEm9jTybsBT0sVoQ0T3mz3aJpCoH3YdsCoDK-9C9OIxTqopzBVkscFZJeGZHE0s4YzjeoLuchQaqWkpQNtu4XNN3HopWm1UsIYbqWUy9mrsu5Im9umXagXpZqsECyUkPcmYWydzTcEApCafrm"/>
+<div class="absolute top-4 left-4">
+<span class="bg-surface/90 backdrop-blur px-2 py-1 rounded font-label-caps text-[10px] text-[#FF4444] border border-[#FF4444]/30">PERFORMANCE</span>
+</div>
+</div>
+<div class="p-gutter flex-grow flex flex-col">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SEP 29, 2024</span>
+<span class="font-label-caps text-label-caps text-[#FF4444] flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1">schedule</span> 7 MIN READ
+                        </span>
+</div>
+<h2 class="font-headline-sm text-headline-sm mb-3 group-hover:text-[#FF4444] transition-colors text-neutral-200">Optimizing Core Web Vitals</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                        Beyond the metrics: Strategies for achieving sub-second LCP on content-heavy dynamic applications.
+                    </p>
+<div class="mt-auto pt-4 border-t border-white/5 flex justify-between items-center">
+<span class="font-code-md text-code-md text-on-surface-variant">#nextjs #vitals</span>
+<span class="material-symbols-outlined text-[#FF4444] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- Article 5: Infrastructure -->
+<article class="bento-card rounded-xl overflow-hidden flex flex-col group">
+<div class="h-48 w-full overflow-hidden relative">
+<img alt="Infrastructure" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A minimalist architectural photograph of a modern tech office hallway with clean white lines, polished concrete floors, and soft blue lighting. The perspective draws the eye toward a distant doorway, symbolizing clarity and progress. The style is ultra-modern and professional, using a restrained palette of grays and cool cyans to create a sense of order." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1JHxs-9rQpCr6BZBgmef6nvs8n1R0gB_h5hPriV2bZV3-YRbAKMlkiX2Es9COlwBReq4rRy3hbYlvPfgRQiz-2nql-rM8kiIzMudwlfk3klDvu021rFPt9C7EsWlC8BMcrtTDr5lxHPuEA-su87Nm5f4B_Gok26ocLnVkhjY5znb6NlWMfpo0FrTDaSZq8fmb0JK6roL5GNo2WYZrnr-N0USGvvJOMryn6AcYc2FnwECK_mHo91p5WO6HWW1sRwOCcGJKAoFQ_xlE"/>
+<div class="absolute top-4 left-4">
+<span class="bg-surface/90 backdrop-blur px-2 py-1 rounded font-label-caps text-[10px] text-[#FF4444] border border-[#FF4444]/30">CLOUD</span>
+</div>
+</div>
+<div class="p-gutter flex-grow flex flex-col">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SEP 15, 2024</span>
+<span class="font-label-caps text-label-caps text-[#FF4444] flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1">schedule</span> 10 MIN READ
+                        </span>
+</div>
+<h2 class="font-headline-sm text-headline-sm mb-3 group-hover:text-[#FF4444] transition-colors text-neutral-200">Serverless: The Quiet Revolution</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                        Why managed infrastructure is becoming the default choice for the world's fastest growing startups.
+                    </p>
+<div class="mt-auto pt-4 border-t border-white/5 flex justify-between items-center">
+<span class="font-code-md text-code-md text-on-surface-variant">#aws #serverless</span>
+<span class="material-symbols-outlined text-[#FF4444] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- Article 6: Database -->
+<article class="bento-card rounded-xl overflow-hidden flex flex-col group">
+<div class="h-48 w-full overflow-hidden relative">
+<img alt="Database" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Digital representation of a global data stream, showing stylized earth continents constructed from glowing blue light points with bright lines of data connecting major hubs. The background is a vast, dark cosmic space. The aesthetic is high-tech and expansive, representing global connectivity and large-scale database infrastructure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOHoyzCZuw9zEQFOp30BukY488okvw1TBhUmUtFGossj_T6Z_47N7fAbEgMdNhIxIGcCFfZ4hWfx3HrPFPicZvmJC4skp68ZZ6IaPRmCbEw5A2OKdxJjjdOhMn4Tj3JnD-aQ_v9-PUMXI9UwtRYSPw3SKdpggrZIdv3HOojhrzlepPgi4yU4beZ2eQR6OhEw0gXjXEfhmviNNkv2HXxQuiFKaXR1PgEuiOqq461N7Fxoz7RTmWcpryq3Ec9N2t2LqjKJ5Qd_Zt9QcL"/>
+<div class="absolute top-4 left-4">
+<span class="bg-surface/90 backdrop-blur px-2 py-1 rounded font-label-caps text-[10px] text-[#FF4444] border border-[#FF4444]/30">DATABASES</span>
+</div>
+</div>
+<div class="p-gutter flex-grow flex flex-col">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SEP 04, 2024</span>
+<span class="font-label-caps text-label-caps text-[#FF4444] flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1">schedule</span> 6 MIN READ
+                        </span>
+</div>
+<h2 class="font-headline-sm text-headline-sm mb-3 group-hover:text-[#FF4444] transition-colors text-neutral-200">PostgreSQL vs the World</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                        A detailed comparison of relational durability versus the flexibility of modern NoSQL alternatives.
+                    </p>
+<div class="mt-auto pt-4 border-t border-white/5 flex justify-between items-center">
+<span class="font-code-md text-code-md text-on-surface-variant">#postgres #sql</span>
+<span class="material-symbols-outlined text-[#FF4444] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-16 flex justify-center items-center space-x-2">
+<button class="w-10 h-10 flex items-center justify-center rounded border border-white/10 hover:border-[#FF4444] text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded bg-[#FF4444] text-white font-label-caps text-label-caps">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-white/10 hover:border-[#FF4444] text-on-surface-variant transition-colors font-label-caps text-label-caps">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-white/10 hover:border-[#FF4444] text-on-surface-variant transition-colors font-label-caps text-label-caps">3</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-white/10 hover:border-[#FF4444] text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<!-- Newsletter Subscription -->
+<section class="mt-24 p-gutter bento-card rounded-xl flex flex-col md:flex-row items-center justify-between gap-gutter">
+<div class="max-w-xl">
+<h3 class="font-headline-sm text-headline-sm mb-2 text-neutral-200">Subscribe to the Technical Stack</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Get deep dives and tutorial updates delivered directly to your inbox. No fluff, just code.</p>
+</div>
+<div class="w-full md:w-auto flex flex-col sm:flex-row gap-base">
+<input class="bg-surface-container border-b border-outline-variant focus:border-[#FF4444] focus:ring-0 text-neutral-200 font-code-md text-code-md px-4 py-3 min-w-[300px] outline-none transition-all" placeholder="engineer@domain.com" type="email"/>
+<button class="bg-[#FF4444] text-white px-8 py-3 font-label-caps text-label-caps rounded hover:brightness-110 transition-all">Join List</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-white/10 mt-24">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-gutter w-full max-w-7xl mx-auto">
+<div class="font-label-caps text-label-caps text-[#FF4444] mb-4 md:mb-0">
+                ARCHITECT.IO
+            </div>
+<div class="flex space-x-6 mb-4 md:mb-0">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-[#FF4444] transition-colors duration-200" href="#">Github</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-[#FF4444] transition-colors duration-200" href="#">LinkedIn</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-[#FF4444] transition-colors duration-200" href="#">Twitter</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-[#FF4444] transition-colors duration-200" href="#">Contact</a>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-center md:text-right">
+                © 2024 Architect. All rights reserved. Built with technical precision.
+            </div>
+</div>
+</footer>
+</div>
+<script>
+    // Loading Screen Logic
+    window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            const loader = document.getElementById('loading-screen');
+            if(loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 1000);
+            }
+        }, 2200);
+    });
+
+    // Disable scroll during loading
+    document.body.style.overflow = 'hidden';
+
+    // Micro-interactions for article cards
+    document.querySelectorAll('.bento-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            const img = card.querySelector('img');
+            if(img) img.style.transform = 'scale(1.05)';
+        });
+        card.addEventListener('mouseleave', () => {
+            const img = card.querySelector('img');
+            if(img) img.style.transform = 'scale(1)';
+        });
+    });
+
+    // Smooth scroll implementation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+</body></html>

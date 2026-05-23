@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Geist:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#ffb3ad",
+                    "surface-dim": "#121414",
+                    "on-primary-fixed-variant": "#474646",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "on-secondary": "#680009",
+                    "background": "#121414",
+                    "surface-container-high": "#292a2a",
+                    "surface-tint": "#c8c6c5",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "surface-variant": "#343535",
+                    "inverse-surface": "#e3e2e2",
+                    "tertiary-fixed": "#e5e2e1",
+                    "tertiary-container": "#0f0f0f",
+                    "on-surface": "#e3e2e2",
+                    "surface-container-highest": "#343535",
+                    "surface-container-low": "#1b1c1c",
+                    "outline-variant": "#444748",
+                    "on-tertiary": "#313030",
+                    "surface-container-lowest": "#0d0e0f",
+                    "outline": "#8e9192",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed": "#410004",
+                    "on-background": "#e3e2e2",
+                    "primary": "#c8c6c5",
+                    "on-primary-fixed": "#1c1b1b",
+                    "on-secondary-container": "#ffc2bd",
+                    "surface-bright": "#383939",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "on-surface-variant": "#c4c7c7",
+                    "on-primary": "#313030",
+                    "secondary-container": "#b60119",
+                    "on-secondary-fixed-variant": "#930012",
+                    "primary-fixed": "#e5e2e1",
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "inverse-primary": "#5f5e5e",
+                    "secondary-fixed": "#ffdad7",
+                    "primary-container": "#0f0f0f",
+                    "on-primary-container": "#7d7b7b",
+                    "inverse-on-surface": "#303031",
+                    "tertiary": "#c8c6c5",
+                    "on-error-container": "#ffdad6",
+                    "surface-container": "#1f2020",
+                    "surface": "#121414",
+                    "on-tertiary-container": "#7d7b7b",
+                    "error": "#ffb4ab",
+                    "secondary": "#ffb3ad"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "container-max": "1280px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "bento-gap": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Geist"],
+                    "headline-lg-mobile": ["Geist"],
+                    "body-lg": ["Geist"],
+                    "body-md": ["Geist"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-md": ["Geist"],
+                    "display-lg": ["Geist"],
+                    "display-lg-mobile": ["Geist"],
+                    "headline-sm": ["Geist"],
+                    "label-caps": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #121414;
+            color: #e3e2e2;
+            -webkit-font-smoothing: antialiased;
+        }
+        .bento-card {
+            background-color: rgba(31, 32, 32, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(8px);
+        }
+        .bento-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            border-color: rgba(200, 198, 197, 0.3);
+            background-color: rgba(41, 42, 42, 0.8);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .architectural-dots {
+            background-image: radial-gradient(#ffffff10 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        @keyframes sweep {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        .sweep-line {
+            animation: sweep 2.5s ease-in-out infinite;
+            background: linear-gradient(90deg, transparent, #c8c6c5, transparent);
+        }
+        @keyframes reveal {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .text-reveal {
+            animation: reveal 1s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden dark bg-surface text-on-surface">
+<!-- Loading Screen -->
+<div class="fixed inset-0 z-[100] bg-surface flex flex-col items-center justify-center transition-opacity duration-700" id="loader">
+<div class="relative w-64 h-24 flex flex-col items-center justify-center">
+<span class="font-label-caps text-on-surface-variant tracking-[0.4em] uppercase text-reveal">SYSTEM ARCHITECT</span>
+<div class="absolute bottom-0 left-0 w-full h-[1px] bg-surface-container-high overflow-hidden mt-4">
+<div class="sweep-line absolute h-full w-1/2"></div>
+</div>
+</div>
+</div>
+<!-- Fixed Background Elements -->
+<div class="fixed inset-0 z-[-1] pointer-events-none bg-surface">
+<div class="absolute inset-0 architectural-dots"></div>
+<div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-white opacity-[0.03] blur-[120px]"></div>
+</div>
+<!-- Content Wrapper -->
+<div class="relative z-10">
+<!-- Top Navigation -->
+<nav class="bg-surface/80 backdrop-blur-md dark:bg-surface/80 docked full-width top-0 sticky z-50 border-b border-white/10">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full max-w-7xl mx-auto">
+<span class="font-label-caps text-label-caps text-on-surface tracking-widest">ARCHITECT.IO</span>
+<div class="hidden md:flex gap-8">
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-all duration-200" href="#">Home</a>
+<a class="text-primary-fixed-dim font-bold border-b-2 border-primary-fixed-dim pb-1 transition-all duration-200" href="#">Services</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-all duration-200" href="#">Projects</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-all duration-200" href="#">Blog</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block text-on-surface-variant font-label-caps text-label-caps hover:text-primary-fixed-dim transition-all">View Work</button>
+<button class="bg-primary-fixed-dim text-on-primary-fixed font-label-caps text-label-caps px-6 py-2.5 rounded-full hover:opacity-90 active:scale-95 transition-all">Hire Me</button>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-16">
+<!-- Hero Section -->
+<header class="mb-16">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-on-secondary-fixed-variant/20 border border-on-secondary-fixed-variant/30 mb-6">
+<span class="material-symbols-outlined text-[14px] text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-label-caps text-[10px] text-primary-fixed-dim tracking-widest">SYSTEM_SERVICES_V2.0</span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6 max-w-3xl">
+                Technical <span class="text-primary-fixed-dim">Infrastructure</span> for Modern Business.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                Precision-engineered development and automation services designed to scale your technical operations without the overhead.
+            </p>
+</header>
+<!-- Services Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap mb-24">
+<!-- Technical Consultation Card -->
+<div class="md:col-span-4 bento-card rounded-xl p-8 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-8 border border-white/5">
+<span class="material-symbols-outlined text-primary-fixed-dim">architecture</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Technical Consultation</h3>
+<p class="text-on-surface-variant mb-6">Deep-dive architectural review and technology roadmap development for scaling startups.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3 text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[18px]">check_circle</span> Stack Optimization
+                        </li>
+<li class="flex items-center gap-3 text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[18px]">check_circle</span> Scalability Audits
+                        </li>
+</ul>
+</div>
+<div class="mt-auto">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-4">FROM $250 / SESSION</p>
+<button class="w-full py-4 border border-primary-fixed-dim text-primary-fixed-dim rounded-lg font-label-caps text-label-caps hover:bg-primary-fixed-dim/5 transition-all active:scale-[0.98]" onclick="bookingAction()">RESERVE SLOT</button>
+</div>
+</div>
+<!-- Custom n8n Automation Card (Highlighted) -->
+<div class="md:col-span-4 bento-card rounded-xl p-8 flex flex-col border-primary-fixed-dim/20 bg-surface-container-high relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="px-2 py-1 bg-primary-fixed-dim text-on-primary-fixed font-label-caps text-[10px] rounded">MOST POPULAR</span>
+</div>
+<div>
+<div class="w-12 h-12 rounded-lg bg-primary-fixed-dim/10 flex items-center justify-center mb-8 border border-primary-fixed-dim/20">
+<span class="material-symbols-outlined text-primary-fixed-dim">hub</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Custom n8n Automation</h3>
+<p class="text-on-surface-variant mb-6">Self-hosted or cloud automation workflows that bridge your entire SaaS ecosystem together.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3 text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[18px]">check_circle</span> API Integrations
+                        </li>
+<li class="flex items-center gap-3 text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[18px]">check_circle</span> Error Handling Systems
+                        </li>
+<li class="flex items-center gap-3 text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[18px]">check_circle</span> Self-Hosted Deployment
+                        </li>
+</ul>
+</div>
+<div class="mt-auto">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-4">RETAINER OR PROJECT BASIS</p>
+<button class="w-full py-4 bg-primary-fixed-dim text-on-primary-fixed rounded-lg font-label-caps text-label-caps hover:opacity-90 transition-all active:scale-[0.98] shadow-lg shadow-primary-fixed-dim/10" onclick="bookingAction()">BOOK WORKFLOW</button>
+</div>
+</div>
+<!-- Full-Stack Development Card -->
+<div class="md:col-span-4 bento-card rounded-xl p-8 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-8 border border-white/5">
+<span class="material-symbols-outlined text-primary-fixed-dim">layers</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Full-Stack Development</h3>
+<p class="text-on-surface-variant mb-6">Bespoke web applications built with performance, security, and developer experience in mind.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3 text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[18px]">check_circle</span> React / Next.js Expert
+                        </li>
+<li class="flex items-center gap-3 text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[18px]">check_circle</span> Node / Python Backend
+                        </li>
+</ul>
+</div>
+<div class="mt-auto">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-4">STARTING AT $5,000</p>
+<button class="w-full py-4 border border-primary-fixed-dim text-primary-fixed-dim rounded-lg font-label-caps text-label-caps hover:bg-primary-fixed-dim/5 transition-all active:scale-[0.98]" onclick="bookingAction()">INQUIRE NOW</button>
+</div>
+</div>
+<!-- Booking Info Bar -->
+<div class="md:col-span-12 bento-card rounded-xl p-6 bg-surface-container-lowest/50 flex flex-wrap items-center justify-between gap-6 border-dashed">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">payments</span>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant">SECURE CHECKOUT</p>
+<p class="text-body-md text-on-surface">Integrated Razorpay gateway for seamless global payments.</p>
+</div>
+</div>
+<div class="flex gap-4 opacity-50 grayscale hover:grayscale-0 transition-all">
+<span class="font-label-caps text-[14px]">VISA</span>
+<span class="font-label-caps text-[14px]">MASTERCARD</span>
+<span class="font-label-caps text-[14px]">UPI</span>
+<span class="font-label-caps text-[14px]">STRIPE</span>
+</div>
+</div>
+</div>
+<!-- FAQ Section -->
+<section class="max-w-4xl mx-auto py-16">
+<div class="text-center mb-16">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">Common Protocols (FAQ)</h2>
+<p class="text-on-surface-variant">Operational guidelines and frequent inquiries.</p>
+</div>
+<div class="space-y-4">
+<div class="bento-card rounded-lg overflow-hidden transition-all duration-300">
+<button class="w-full px-8 py-6 flex items-center justify-between text-left group" onclick="toggleFaq(this)">
+<span class="font-headline-sm text-[18px] text-on-surface group-hover:text-primary-fixed-dim transition-colors">What is the typical project timeline?</span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform">expand_more</span>
+</button>
+<div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-8">
+<p class="pb-6 text-on-surface-variant leading-relaxed">
+                            Automation projects typically take 1-2 weeks. Full-stack development cycles range from 4-12 weeks depending on complexity. Consultations can be booked within 48 hours.
+                        </p>
+</div>
+</div>
+<div class="bento-card rounded-lg overflow-hidden transition-all duration-300">
+<button class="w-full px-8 py-6 flex items-center justify-between text-left group" onclick="toggleFaq(this)">
+<span class="font-headline-sm text-[18px] text-on-surface group-hover:text-primary-fixed-dim transition-colors">How do payment cycles work?</span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform">expand_more</span>
+</button>
+<div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-8">
+<p class="pb-6 text-on-surface-variant leading-relaxed">
+                            We utilize a milestone-based payment structure. A 50% deposit is required to initiate most projects, with subsequent payments linked to technical delivery. Razorpay links are generated for every invoice.
+                        </p>
+</div>
+</div>
+<div class="bento-card rounded-lg overflow-hidden transition-all duration-300">
+<button class="w-full px-8 py-6 flex items-center justify-between text-left group" onclick="toggleFaq(this)">
+<span class="font-headline-sm text-[18px] text-on-surface group-hover:text-primary-fixed-dim transition-colors">Revision and Support Policy</span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform">expand_more</span>
+</button>
+<div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-8">
+<p class="pb-6 text-on-surface-variant leading-relaxed">
+                            Every project includes 2 rounds of major revisions and a 30-day post-launch technical support window to ensure system stability. Additional support retainers are available upon request.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="mt-24 rounded-2xl overflow-hidden relative min-h-[400px] flex items-center justify-center p-8 border border-white/5 bg-surface-container-low">
+<div class="absolute inset-0 z-0 opacity-20">
+<img alt="Technical visualization" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-GA68eQz-HiF61JLkCNvIPYQm8hKLob8VQ2-8ePP0IR8F2NVmAXcLdZT-WpRyvg6zcS14oUwo-Uip6-HGD8mfYfT3HABjtK2hhM4fY0dK_kzCCu6eaW0w1ErnutXRfk4tUPfD38gCbsXjoHLTOFGfj2YiNUmPGU7rlsBOFnXFXe1qhcsar6cCuJebyf6-_L63_jthsJqvamfa5B9ppVhBh1gew9syuA3VBooIW-RXPA6ygwp7Ji-DbKOUIECBcfm2km_L7wNIVIbC"/>
+</div>
+<div class="relative z-10 text-center max-w-2xl">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">Ready to upgrade your stack?</h2>
+<p class="text-on-surface-variant mb-10">Select a service above or contact me for a custom engineering proposal.</p>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<button class="bg-primary-fixed-dim text-on-primary-fixed font-label-caps text-label-caps px-10 py-4 rounded-lg hover:opacity-90 active:scale-95 transition-all">START A PROJECT</button>
+<button class="border border-outline-variant text-on-surface font-label-caps text-label-caps px-10 py-4 rounded-lg hover:bg-white/5 active:scale-95 transition-all">DOWNLOAD RATE CARD</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-white/10">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-gutter w-full max-w-7xl mx-auto">
+<div class="mb-6 md:mb-0">
+<span class="font-label-caps text-label-caps text-primary-fixed-dim">ARCHITECT.IO</span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 text-[12px]">© 2024 Architect. All rights reserved. Built with technical precision.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant font-label-caps text-[12px] hover:text-primary-fixed-dim transition-colors duration-200" href="#">Github</a>
+<a class="text-on-surface-variant font-label-caps text-[12px] hover:text-primary-fixed-dim transition-colors duration-200" href="#">LinkedIn</a>
+<a class="text-on-surface-variant font-label-caps text-[12px] hover:text-primary-fixed-dim transition-colors duration-200" href="#">Twitter</a>
+<a class="text-on-surface-variant font-label-caps text-[12px] hover:text-primary-fixed-dim transition-colors duration-200" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</div>
+<script>
+    // Loading Screen Logic
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 700);
+        }, 2200);
+    });
+
+    function toggleFaq(button) {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('.material-symbols-outlined');
+        
+        document.querySelectorAll('.faq-content').forEach(item => {
+            if (item !== content) {
+                item.style.maxHeight = '0';
+                item.previousElementSibling.querySelector('.material-symbols-outlined').style.transform = 'rotate(0deg)';
+            }
+        });
+
+        if (content.style.maxHeight === '0px' || content.style.maxHeight === '') {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            icon.style.transform = 'rotate(180deg)';
+        } else {
+            content.style.maxHeight = '0';
+            icon.style.transform = 'rotate(0deg)';
+        }
+    }
+
+    function bookingAction() {
+        const btn = event.currentTarget;
+        btn.classList.add('scale-95');
+        setTimeout(() => {
+            btn.classList.remove('scale-95');
+            alert("Redirecting to Secure Razorpay Portal...");
+        }, 150);
+    }
+</script>
+</body></html>
