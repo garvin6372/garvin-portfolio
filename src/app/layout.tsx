@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { SiteShell } from '@/components/site/SiteShell';
 
 export const metadata: Metadata = {
     title: 'Garvin Dholakiya | AI Workflow Expert',
@@ -15,9 +16,9 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
+        <html lang="en" className="dark">
             <body>
-                {children}
+                <SiteShell>{children}</SiteShell>
             </body>
         </html>
     );
