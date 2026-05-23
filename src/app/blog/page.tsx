@@ -4,8 +4,17 @@ import { getBlogPosts } from '@/lib/content';
 import { BentoCard, Chip } from '@/components/site/UI';
 
 export const metadata = {
-    title: 'Blog | Garvin Dholakiya',
-    description: 'Project case studies and technical notes from Garvin Dholakiya.',
+    title: 'Blog',
+    description: 'Case studies by Garvin Dholakiya on AI automation, workflow architecture, React Native apps, Swift iOS apps, AI agents, and full-stack product systems.',
+    alternates: {
+        canonical: '/blog',
+    },
+    openGraph: {
+        title: 'Blog | Garvin Dholakiya',
+        description: 'Project-backed writing from Garvin Dholakiya on AI automation, workflow architecture, mobile apps, and product engineering.',
+        url: '/blog',
+        type: 'website',
+    },
 };
 
 export default function BlogPage() {

@@ -2,8 +2,17 @@ import { getProjects } from '@/lib/content';
 import { ProjectGallery } from '@/components/site/ProjectGallery';
 
 export const metadata = {
-    title: 'Projects | Garvin Dholakiya',
-    description: 'Curated AI automation, full-stack, and workflow architecture projects by Garvin Dholakiya.',
+    title: 'Projects',
+    description: 'Projects by Garvin Dholakiya, including mypostshare.com, AI automation systems, React Native mobile apps, Swift iOS apps, and workflow architecture.',
+    alternates: {
+        canonical: '/projects',
+    },
+    openGraph: {
+        title: 'Projects | Garvin Dholakiya',
+        description: 'AI automation, mobile app, and full-stack product projects by Garvin Dholakiya.',
+        url: '/projects',
+        type: 'website',
+    },
 };
 
 export default function ProjectsPage() {

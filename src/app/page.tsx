@@ -22,7 +22,7 @@ export default function Home() {
                     </span>
                 </h1>
                 <p className="hero-copy hero-item">
-                    I design AI automations, workflow systems, and product experiences that turn manual business work into fast, reliable software.
+                    I am Garvin Dholakiya. I design AI automations, workflow systems, and product experiences that turn manual business work into fast, reliable software.
                 </p>
                 <div className="hero-actions hero-item">
                     <Link className="btn btn-primary magnetic" href="/projects">

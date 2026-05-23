@@ -5,8 +5,17 @@ import { BentoCard, Chip } from '@/components/site/UI';
 import { getExperience, getProfile, getSkills } from '@/lib/content';
 
 export const metadata = {
-    title: 'Services | Garvin Dholakiya',
-    description: 'AI automation, workflow design, full-stack development, and technical consultation services.',
+    title: 'Services',
+    description: 'Hire Garvin Dholakiya for AI automation, workflow architecture, AI agents, prompt engineering, React Native apps, Swift iOS apps, and full-stack development.',
+    alternates: {
+        canonical: '/services',
+    },
+    openGraph: {
+        title: 'Services | Garvin Dholakiya',
+        description: 'AI automation, workflow architecture, mobile app, and product engineering services from Garvin Dholakiya.',
+        url: '/services',
+        type: 'website',
+    },
 };
 
 export default function ServicesPage() {

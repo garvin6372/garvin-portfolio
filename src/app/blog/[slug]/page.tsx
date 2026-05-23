@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { getBlogPostBySlug, getBlogPosts, getProfile } from '@/lib/content';
@@ -9,12 +10,38 @@ export function generateStaticParams() {
         .map((post) => ({ slug: post.id }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
     const project = getBlogPostBySlug(slug);
     return {
-        title: project ? `${project.title} | Garvin Dholakiya` : 'Case Study | Garvin Dholakiya',
-        description: project?.description ?? 'Garvin Dholakiya project case study.',
+        title: project ? project.title : 'Case Study',
+        description: project?.description ?? 'Garvin Dholakiya project case study on AI automation, workflow architecture, and full-stack product delivery.',
+        alternates: {
+            canonical: project ? `/blog/${project.id}` : '/blog',
+        },
+        openGraph: {
+            title: project ? `${project.title} | Garvin Dholakiya` : 'Case Study | Garvin Dholakiya',
+            description: project?.description ?? 'Garvin Dholakiya project case study.',
+            url: project ? `/blog/${project.id}` : '/blog',
+            type: 'article',
+            images: project ? [
+                {
+                    url: project.imageUrl,
+                    width: 1200,
+                    height: 630,
+                    alt: `${project.title} by Garvin Dholakiya`,
+                },
+            ] : undefined,
+            authors: ['Garvin Dholakiya'],
+            publishedTime: project?.date,
+            tags: project?.technologies,
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: project ? `${project.title} | Garvin Dholakiya` : 'Case Study | Garvin Dholakiya',
+            description: project?.description ?? 'Garvin Dholakiya project case study.',
+            images: project ? [project.imageUrl] : undefined,
+        },
     };
 }
 
@@ -27,9 +54,31 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
     const related = getBlogPosts()
         .filter((item) => item.id !== project.id)
         .slice(0, 2);
+    const articleJsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: project.title,
+        description: project.description,
+        image: project.imageUrl,
+        author: {
+            '@type': 'Person',
+            name: 'Garvin Dholakiya',
+            jobTitle: 'AI Software Developer & Workflow Architect',
+        },
+        publisher: {
+            '@type': 'Person',
+            name: 'Garvin Dholakiya',
+        },
+        keywords: project.technologies.join(', '),
+        mainEntityOfPage: `/blog/${project.id}`,
+    };
 
     return (
         <div className="article-layout">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+            />
             <aside className="article-sidebar">
                 <Link className="back-link" href="/blog"><ArrowLeft size={16} /> Articles</Link>
                 <div>

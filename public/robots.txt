@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://garvin.jinnityai.com/sitemap.xml
